@@ -1,0 +1,7 @@
+{
+  "type": "private",
+  "cmd": {
+    "name": "emotes",
+    "description": "Get Server Emojis"
+  }
+}

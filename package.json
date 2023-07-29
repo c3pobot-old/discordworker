@@ -1,0 +1,41 @@
+{
+  "name": "discordworker",
+  "version": "1.0.0",
+  "description": "discord base commands",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "update": "chmod a+x updategitdependency.sh && ./updategitdependency.sh",
+    "build": "chmod a+x buildtestimage.sh && ./buildtestimage.sh c3pobot-old/discordworker",
+    "prod": "chmod a+x buildprodimage.sh && ./buildprodimage.sh c3pobot-old/discordworker"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/c3po-shard/discordworker.git"
+  },
+  "author": "scuba",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/c3po-shard/discordworker/issues"
+  },
+  "homepage": "https://gitlab.com/c3po-shard/discordworker#readme",
+  "dependencies": {
+    "@vitalets/google-translate-api": "^8.0.0",
+    "app-module-path": "^2.2.0",
+    "botrequest": "github:c3pobot/botrequest",
+    "cmd2array": "github:c3pobot-old/cmd2array",
+    "dbwrapper": "github:c3pobot-old/dbwrapper",
+    "discordhelper": "github:c3pobot-old/discordhelper",
+    "discordmsg": "github:c3pobot-old/discordmsg",
+    "express": "^4.18.1",
+    "googleapis": "^108.0.0",
+    "got": "^11.8.5",
+    "json-array-sorter": "0.0.5",
+    "mongoapiclient": "github:c3pobot/mongoapiclient",
+    "node-fetch": "^2.6.7",
+    "numeral": "^2.0.6",
+    "quewrapper": "github:c3pobot-old/quewrapper",
+    "shyriiwook": "^1.0.0",
+    "uuid": "^8.3.2"
+  }
+}
