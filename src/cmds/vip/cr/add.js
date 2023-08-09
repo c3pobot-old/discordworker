@@ -7,9 +7,12 @@ module.exports = async(obj, opt = [])=>{
     if(opt.find(x=>x.name == 'anywhere')) crca = opt.find(x=>x.name == 'anywhere').value
     if(trigger && response){
       const vip = (await mongo.find('vip', {_id: obj.member.user.id}))[0]
+
       if(vip && vip.crLimit) limit = vip.crLimit
       const localCR = (await mongo.find('reactions', {_id: obj.member.user.id}))[0]
+
       if(localCR && localCR.cr) cr = localCR.cr
+
       if(+cr.length >= limit){
         msg2send.content = 'You are limited to **'+limit+'** and you have **'+cr.length+'** custom reactions'
       }else{
@@ -36,7 +39,7 @@ module.exports = async(obj, opt = [])=>{
         }
       }
     }
-    HP.ReplyMsg(obj, msg2send)
+    let status = await HP.ReplyMsg(obj, msg2send)
   }catch(e){
     console.error(e)
     HP.ReplyError(obj)

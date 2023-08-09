@@ -23,6 +23,7 @@
     "@vitalets/google-translate-api": "^8.0.0",
     "app-module-path": "^2.2.0",
     "botrequest": "github:c3pobot/botrequest",
+    "bull": "^4.10.4",
     "cmd2array": "github:c3pobot-old/cmd2array",
     "dbwrapper": "github:c3pobot-old/dbwrapper",
     "discordhelper": "github:c3pobot-old/discordhelper",
@@ -34,7 +35,6 @@
     "mongoapiclient": "github:c3pobot/mongoapiclient",
     "node-fetch": "^2.6.7",
     "numeral": "^2.0.6",
-    "quewrapper": "github:c3pobot-old/quewrapper",
     "shyriiwook": "^1.0.0",
     "uuid": "^8.3.2"
   }

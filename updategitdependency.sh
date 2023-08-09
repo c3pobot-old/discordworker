@@ -5,8 +5,6 @@ echo updating dbwrapper
 npm i --package-lock-only github:c3pobot-old/dbwrapper
 echo updating discordmsg
 npm i --package-lock-only github:c3pobot-old/discordmsg
-echo updating quewrapper
-npm i --package-lock-only github:c3pobot-old/quewrapper
 echo updating discordhelper
 npm i --package-lock-only github:c3pobot-old/discordhelper
 echo updating mongoapiclient

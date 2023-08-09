@@ -41,10 +41,11 @@ module.exports = async(obj)=>{
               if(cmdObj?.public?.cmds && publicCmds?.length > 0) cmdObj.public.cmds = cmdObj.public.cmds.concat(publicCmds)
             }
           }
-          const guilds = await mongo.find('discordServer', {basicStatus: 1}, {_id: 1, admin: 1})
+          const guilds = await mongo.find('discordServer', {basicStatus: 1}, {_id: 1, admin: 1, ignore: 1})
           const payouts = await mongo.find('payoutServers', {status: 1}, {admin:1, patreonId:1, sId: 1})
           let gCount = 0, sCount = 0, gDeferedCount = 0, sDeferedCount = 0
           for(let i in guilds){
+            if(guilds[i].ignore) continue
             let guildCmds = JSON.parse(JSON.stringify(cmdObj.private.cmds))
             if(process.env.IS_TEST_BOT && guilds[i]._id == botSettings.botSID) guildCmds = guildCmds.concat(JSON.parse(JSON.stringify(cmdObj.public.cmds)))
             if(payouts?.filter(x=>x.sId == guilds[i]._id).length > 0) guildCmds = guildCmds.concat(JSON.parse(JSON.stringify(cmdObj.shard.cmds)))

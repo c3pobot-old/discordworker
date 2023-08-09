@@ -1,25 +1,10 @@
 'use strict'
 require('src/globals')
-require('src/expressServer')
-const QueWrapper = require('quewrapper')
+
 const SaveSlashCmds = require('cmd2array')
 require('./botUpdates')
 
-const cmdQueOpts = {
-  queName: process.env.CMD_QUE_NAME || 'discord',
-  numJobs: +process.env.NUM_JOBS || 1,
-  queOptions: {
-    redis: {
-      host: process.env.REDIS_SERVER,
-  		port: +process.env.REDIS_PORT,
-  		password: process.env.REDIS_PASS
-    }
-  },
-  localQue: redis,
-  localQueKey: process.env.LOCAL_QUE_KEY
-}
-if(process.env.PRIVATE_WORKER) cmdQueOpts.queName += 'Private'
-const CmdQue = new QueWrapper(cmdQueOpts)
+const CmdQue = require('./cmdQue')
 
 const InitRedis = async()=>{
   try{
