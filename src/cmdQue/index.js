@@ -1,4 +1,5 @@
 'use strict'
+const log = require('logger')
 let CMD_QUE_NAME = process.env.CMD_QUE_NAME || 'discord'
 if(process.env.PRIVATE_WORKER) CMD_QUE_NAME += 'Private'
 const cmdProcessor = require('./cmdProcessor')

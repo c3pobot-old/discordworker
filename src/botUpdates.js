@@ -1,4 +1,5 @@
 'use strict'
+const log = require('logger')
 const CLIENT_ID = process.env.DISCORD_CLIENT_ID
 const { v4: uuidv4 } = require('uuid')
 const checkCmds = async()=>{
@@ -60,4 +61,17 @@ const syncMessages = async()=>{
     throw(e)
   }
 }
-syncUpdates()
+const Start = ()=>{
+  try{
+    let status = mongo.status()
+    if(status){
+      syncUpdates()
+      return
+    }
+    setTimeout(Start, 5000)
+  }catch(e){
+    log.error(e)
+    setTimeout(Start, 5000)
+  }
+}
+Start()

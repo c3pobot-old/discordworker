@@ -1,4 +1,5 @@
 'use strict'
+const log = require('logger')
 const deepCopy = require('./deepCopy')
 const Cmds = {}
 const LOCAL_QUE_KEY = process.env.LOCAL_QUE_KEY
@@ -23,15 +24,14 @@ module.exports = async(job)=>{
     res.status = 'command not found'
     let obj = await addtoLocalQue(job)
     if(!obj?.data?.name || !CmdMap[obj.data.name]){
-      await removeFromLocalQue(obj)
+      if(LOCAL_QUE_KEY && redis) await redis.del(`${LOCAL_QUE_KEY}-${obj.jobId}`)
       return res
     }
     if(!Cmds[obj.data.name]) Cmds[obj.data.name] = require('src/cmds/'+obj.data.name)
     res = await Cmds[obj.data.name](obj)
     if(!res) res = {status: 'ok'}
-    if(LOCAL_QUE_KEY && redis) await redis.del(`${LOCAL_QUE_KEY}-${obj.jobId}`)
     return res
   }catch(e){
-    console.error(e)
+    log.error(e)
   }
 }

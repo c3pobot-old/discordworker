@@ -1,4 +1,5 @@
 'use strict'
+const log = require('logger')
 const LOCAL_QUE_KEY = process.env.LOCAL_QUE_KEY
 const Que = require('./index')
 
@@ -22,7 +23,7 @@ module.exports = async()=>{
         if(jobs[i]?.jobId) await Que.removeJob(jobs[i].jobId)
       }
     }
-    console.log('Processed '+count+' left over in job que. Deleted '+failed+' invalid')
+    log.info(`Processed ${count} left over in job que. Deleted ${failed} invalid`)
   }catch(e){
     throw(e)
   }
